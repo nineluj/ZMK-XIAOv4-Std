@@ -48,7 +48,7 @@
                                 &kp LGUI        &lt 2 SPACE     &lt 1 ESC       &lt 3 TAB &lt 4 BSPC    &lt 5 ENTER
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp SCROLLDOWN SCROLLUP>;
         };
 
         // Layer 1: Function
@@ -132,7 +132,7 @@
                                 &mkp MB3        &mkp MB2        &mkp MB1        &mkp MB1        &mkp MB2        &mkp MB3
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp SCROLLRIGHT SCROLLLEFT>;
         };
     };
 };
