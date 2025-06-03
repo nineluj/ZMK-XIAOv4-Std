@@ -39,45 +39,97 @@
     keymap {
         compatible = "zmk,keymap";
 
+        // Layer 0: Base (Colemak-DH)
         default_layer {
             bindings = <
 &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J    &kp L           &kp U           &kp Y           &kp SQT
 &hml LALT A     &hml LGUI R     &hml LCTRL S    &hml LSHIFT T   &kp G           &kp M    &hmr RSHIFT N   &hmr RCTRL E    &hmr RGUI I     &hmr RALT O
-&kp Z           &kp X           &kp C           &kp D           &kp V           &kp K    &kp H           &kp COMMA       &kp DOT         &kp SLASH
-                                &kp ESCAPE      &kp SPACE       &kp ESCAPE      &kp TAB  &kp BACKSPACE   &kp ENTER
+&lt_nav 7 Z     &kp X           &kp C           &kp D           &kp V           &kp K    &kp H           &kp COMMA       &kp DOT         &lt_nav 7 SLASH
+                                &kp LGUI        &lt_nav 2 SPACE &lt_nav 1 ESC   &lt_nav 3 TAB &lt_nav 4 BSPC &lt_nav 5 ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        layer_1 {
+        // Layer 1: Function
+        function_layer {
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &trans  &trans  &trans  &trans  &trans
-&trans      &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans
-&trans      &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans
-                          &trans        &trans        &bootloader     &trans  &trans  &trans
+&none           &none           &none           &none           &none           &kp PSCRN       &kp F7          &kp F8          &kp F9          &kp F12
+&kp LALT        &kp LGUI        &kp LCTRL       &kp LSHIFT      &kp ESC         &kp PAUSE_BREAK &kp F4          &kp F5          &kp F6          &kp F11
+&none           &none           &none           &none           &none           &kp SLCK        &kp F1          &kp F2          &kp F3          &kp F10
+                                &none           &none           &trans          &kp TAB         &kp BSPC        &kp ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        layer_2 {
+        // Layer 2: Navigation
+        navigation_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &trans       &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans    &trans       &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans    &trans       &trans  &trans  &trans  &trans
-                &trans  &trans  &trans    &bootloader  &trans  &trans
+&none           &none           &none           &none           &none           &kp LG(LS(Z))   &kp LG(V)       &kp LG(C)       &kp LG(X)       &kp LG(Z)
+&kp LGUI        &kp LALT        &kp LCTRL       &kp LSHIFT      &kp ESC         &caps_word      &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT
+&mo 6           &none           &none           &none           &none           &kp INS         &kp HOME        &kp PG_DN       &kp PG_UP       &kp END
+                                &none           &trans          &none           &kp TAB         &kp DEL         &kp ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        layer_3 {
+        // Layer 3: Media
+        media_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans  &trans  &trans
-                &trans  &trans  &trans    &mkp MB1  &mkp MB2  &trans
+&none           &none           &none           &none           &none           &none           &none           &none           &none           &none
+&kp C_PREV      &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &kp C_NEXT      &none           &kp LSHIFT      &kp LCTRL       &kp LGUI        &kp LALT
+&none           &none           &none           &none           &none           &none           &none           &none           &none           &none
+                                &kp C_PLAY_PAUSE &kp C_PLAY_PAUSE &kp C_STOP     &trans          &none           &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        // Layer 4: Numeral
+        numeral_layer {
+            bindings = <
+&kp LBKT        &kp N7          &kp N8          &kp N9          &kp RBKT        &none           &none           &none           &none           &none
+&kp SEMI        &kp N4          &kp N5          &kp N6          &kp EQUAL       &none           &kp LSHIFT      &kp LCTRL       &kp LGUI        &kp LALT
+&kp GRAVE       &kp N1          &kp N2          &kp N3          &kp BSLH        &none           &none           &none           &none           &none
+                                &kp LPAR        &kp N0          &kp MINUS       &none           &trans          &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp LG(Z) LG(LS(Z))>;
+        };
+
+        // Layer 5: Symbols
+        symbols_layer {
+            bindings = <
+&kp LBRC        &kp AMPS        &kp ASTRK       &kp LPAR        &kp RBRC        &none           &none           &none           &none           &none
+&kp COLON       &kp CARET       &kp PRCNT       &kp DLLR        &kp PLUS        &none           &kp LSHIFT      &kp LCTRL       &kp LGUI        &kp LALT
+&kp TILDE       &kp EXCL        &kp AT          &kp HASH        &kp PIPE        &none           &none           &none           &none           &none
+                                &kp LPAR        &kp RPAR        &kp UNDER       &none           &none           &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
+        };
+
+        // Layer 6: Virtual Mouse
+        virtual_mouse_layer {
+            bindings = <
+&none           &none           &none           &none           &none           &none           &none           &none           &none           &none
+&kp LGUI        &kp LALT        &kp LCTRL       &kp LSHIFT      &kp ESC         &none           &none           &none           &none           &none
+&none           &none           &none           &none           &none           &none           &none           &none           &none           &none
+                                &none           &none           &trans          &mkp MB3        &mkp MB1        &mkp MB2
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        // Layer 7: Pointer (accessed via Z and / keys)
+        pointer_layer {
+            bindings = <
+&bootloader     &sys_reset      &none           &none           &none           &none           &none           &none           &sys_reset      &bootloader
+&kp LALT        &kp LGUI        &kp LCTRL       &kp LSHIFT      &none           &none           &kp LSHIFT      &kp LCTRL       &kp LGUI        &kp LALT
+&trans          &none           &none           &mkp MB3        &none           &none           &mkp MB3        &none           &none           &trans
+                                &mkp MB3        &mkp MB2        &mkp MB1        &mkp MB1        &mkp MB2        &mkp MB3
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
