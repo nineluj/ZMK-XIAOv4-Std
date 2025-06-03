@@ -12,7 +12,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-     behaviors {
+    behaviors {
         hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -44,8 +44,8 @@
             bindings = <
 &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J    &kp L           &kp U           &kp Y           &kp SQT
 &hml LALT A     &hml LGUI R     &hml LCTRL S    &hml LSHIFT T   &kp G           &kp M    &hmr RSHIFT N   &hmr RCTRL E    &hmr RGUI I     &hmr RALT O
-&lt_nav 7 Z     &kp X           &kp C           &kp D           &kp V           &kp K    &kp H           &kp COMMA       &kp DOT         &lt_nav 7 SLASH
-                                &kp LGUI        &lt_nav 2 SPACE &lt_nav 1 ESC   &lt_nav 3 TAB &lt_nav 4 BSPC &lt_nav 5 ENTER
+&lt 7 Z         &kp X           &kp C           &kp D           &kp V           &kp K    &kp H           &kp COMMA       &kp DOT         &lt 7 SLASH
+                                &kp LGUI        &lt 2 SPACE     &lt 1 ESC       &lt 3 TAB &lt 4 BSPC    &lt 5 ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -136,4 +136,3 @@
         };
     };
 };
-
