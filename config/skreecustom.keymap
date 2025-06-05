@@ -13,27 +13,74 @@
 
 / {
     behaviors {
-        hml: homerow_mods_left {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 30 31 32 33>;
-        };
+      // Fast homerow mods for stronger fingers (T, N - shift keys)
+      hml_fast: homerow_mods_left_fast {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <2>;
+          flavor = "balanced";
+          tapping-term-ms = <140>;        // 50% shorter for shift keys
+          quick-tap-ms = <100>;
+          require-prior-idle-ms = <75>;
+          bindings = <&kp>, <&kp>;
+          hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 30 31 32 33>;
+      };
 
-        hmr: homerow_mods_right {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32 33>;
-        };
+      hmr_fast: homerow_mods_right_fast {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <2>;
+          flavor = "balanced";
+          tapping-term-ms = <140>;
+          quick-tap-ms = <100>;
+          require-prior-idle-ms = <75>;
+          bindings = <&kp>, <&kp>;
+          hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32 33>;
+      };
+
+      // Medium homerow mods for ctrl keys (S, E)
+      hml_med: homerow_mods_left_medium {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <2>;
+          flavor = "balanced";
+          tapping-term-ms = <210>;        // 25% shorter
+          quick-tap-ms = <125>;
+          require-prior-idle-ms = <100>;
+          bindings = <&kp>, <&kp>;
+          hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 30 31 32 33>;
+      };
+
+      hmr_med: homerow_mods_right_medium {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <2>;
+          flavor = "balanced";
+          tapping-term-ms = <210>;
+          quick-tap-ms = <125>;
+          require-prior-idle-ms = <100>;
+          bindings = <&kp>, <&kp>;
+          hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32 33>;
+      };
+
+      // Slow homerow mods for weaker fingers (A, R, I, O - alt/gui)
+      hml_slow: homerow_mods_left_slow {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <2>;
+          flavor = "balanced";
+          tapping-term-ms = <400>;        // 2x longer for weaker keys
+          quick-tap-ms = <200>;
+          require-prior-idle-ms = <150>;
+          bindings = <&kp>, <&kp>;
+          hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 30 31 32 33>;
+      };
+
+      hmr_slow: homerow_mods_right_slow {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <2>;
+          flavor = "balanced";
+          tapping-term-ms = <400>;
+          quick-tap-ms = <200>;
+          require-prior-idle-ms = <150>;
+          bindings = <&kp>, <&kp>;
+          hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32 33>;
+      };
     };
 
     keymap {
@@ -43,10 +90,10 @@
         default_layer {
             bindings = <
 &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J    &kp L           &kp U           &kp Y           &kp SQT
-&hml LALT A     &hml LGUI R     &hml LCTRL S    &hml LSHIFT T   &kp G           &kp M    &hmr RSHIFT N   &hmr RCTRL E    &hmr RGUI I     &hmr RALT O
+&hml_slow LALT A &hml_slow LGUI R &hml_med LCTRL S &hml_fast LSHIFT T &kp G    &kp M &hmr_fast RSHIFT N &hmr_med RCTRL E &hmr_slow RGUI I &hmr_slow RALT O
 &lt 7 Z         &kp X           &kp C           &kp D           &kp V           &kp K    &kp H           &kp COMMA       &kp DOT         &lt 7 SLASH
                                 &kp LGUI        &lt 2 SPACE     &lt 1 ESC       &lt 3 TAB &lt 4 BSPC    &lt 5 ENTER
-            >;
+    >;
 
             sensor-bindings = <&inc_dec_kp C_AC_SCROLL_DOWN C_AC_SCROLL_UP>;
         };
