@@ -26,6 +26,8 @@
 
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
+        // needed to wake the keyboard by pressing any key
+        wakeup-source;
 
         diode-direction = "col2row";
         row-gpios
