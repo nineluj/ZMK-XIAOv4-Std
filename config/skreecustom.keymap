@@ -111,7 +111,7 @@
     // Layer 0: Base (Colemak-DH)
     default_layer {
       bindings = <
-        &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J    &kp L           &kp U           &kp Y           &lt_fast 9 SQT
+        &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J    &kp L           &kp U           &kp Y           &lt 9 SQT
         &hml_slow LALT A &hml_med LGUI R &hml_med LCTRL S &hml_fast LSHIFT T &kp G    &kp M &hmr_fast LSHIFT N &hmr_med LCTRL E &hmr_med LGUI I &hmr_slow LALT O
         &lt_fast 7 Z    &kp X           &kp C           &kp D           &kp V           &kp K    &kp H           &kp COMMA       &kp DOT         &lt 7 SLASH
         &kp LGUI    &lt_fast 2 SPACE  &lt_fast 1 ESC  &lt_fast 3 TAB  &lt_fast 4 BSPC    &lt_fast 5 ENTER
