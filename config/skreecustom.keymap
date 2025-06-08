@@ -111,7 +111,7 @@
     // Layer 0: Base (Colemak-DH)
     default_layer {
       bindings = <
-        &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J    &kp L           &kp U           &kp Y           &kp SQT
+        &kp Q           &kp W           &kp F           &kp P           &kp B           &kp J    &kp L           &kp U           &kp Y           &lt_fast 9 SQT
         &hml_slow LALT A &hml_med LGUI R &hml_med LCTRL S &hml_fast LSHIFT T &kp G    &kp M &hmr_fast LSHIFT N &hmr_med LCTRL E &hmr_med LGUI I &hmr_slow LALT O
         &lt_fast 7 Z    &kp X           &kp C           &kp D           &kp V           &kp K    &kp H           &kp COMMA       &kp DOT         &lt 7 SLASH
         &kp LGUI    &lt_fast 2 SPACE  &lt_fast 1 ESC  &lt_fast 3 TAB  &lt_fast 4 BSPC    &lt_fast 5 ENTER
@@ -211,6 +211,22 @@
         &kp LSHIFT      &kp A           &kp S           &kp D           &kp G           &kp H    &kp J           &kp K           &kp L           &kp SEMI
         &kp LCTRL       &kp X           &kp C           &kp V           &kp B           &kp N    &kp M           &kp COMMA       &kp DOT         &kp SLASH
         &to 0           &kp SPACE       &kp ESC         &kp TAB  &kp SPACE       &kp ENTER
+        >;
+
+      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+    };
+
+    // Layer 9: Bluetooth
+    bluetooth_layer {
+      // by default there are 5 max profiles
+      // BT_SEL changes to given profile
+      // BT_NXT/PRV goes forward and back 1 index
+      // BT_CLR clears the current profile
+      bindings = <
+        &bt BT_CLR       &none           &none              &none        &none           &none           &none           &none           &none           &trans
+          &none          &bt BT_SEL 4    &bt BT_SEL 5       &none        &none           &none           &none           &none           &none           &none
+          &none          &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_NXT      &none           &none           &none           &none           &none
+          &none          &none           &none           &none           &bt BT_PRV      &none
         >;
 
       sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
